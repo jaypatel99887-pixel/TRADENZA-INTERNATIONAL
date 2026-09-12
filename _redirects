@@ -1,0 +1,11 @@
+# Tradenza International - Clean URL Routing & Fallbacks
+/requirements       /requirements.html      200
+/products           /products.html          200
+/rfq                /rfq.html               200
+/buyers             /buyers.html            200
+/suppliers          /suppliers.html         200
+/about              /about.html             200
+/contact            /contact.html           200
+/admin              /admin.html             200
+/api/requirements   /api/requirements.json  200
+/*                  /404.html               404
