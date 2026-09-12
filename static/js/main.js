@@ -171,6 +171,7 @@ function initCategoryQuoteTriggers() {
 // FORM SUBMISSIONS (RFQ, Buyer, Supplier, Contact)
 // ==========================================
 function initFormSubmissions() {
+  console.log("[v0] initFormSubmissions running, forms found:", document.querySelectorAll('form[data-form-type]').length);
   // 1. Dedicated RFQ Form (Page or Modal)
   const rfqForms = document.querySelectorAll('form[data-form-type="rfq"]');
   rfqForms.forEach(form => {
@@ -216,7 +217,7 @@ async function handleFormSubmit(form, endpoint, formLabel) {
   const formData = new FormData(form);
   const data = {};
   formData.forEach((val, key) => {
-    data[key] = val.trim();
+    data[key] = typeof val === 'string' ? val.trim() : val;
   });
 
   // Disable button & show spinner
@@ -231,55 +232,61 @@ async function handleFormSubmit(form, endpoint, formLabel) {
     `;
   }
 
-  // WhatsApp Context message
-  const waContext = `Hello Tradenza International, I submitted a ${formLabel}:\n- Name: ${data.name || ''}\n- Company: ${data.company || 'N/A'}\n- Product/Subject: ${data.product || data.products || data.subject || ''}\n- Country: ${data.country || data.destination_country || 'India'}`;
+  // Build a detailed WhatsApp handoff message from all submitted fields.
+  // This is the primary delivery channel for the static site (no backend).
+  const waContext = buildWhatsAppMessage(formLabel, data);
 
-  try {
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+  // Simulate a brief processing state, then persist locally and confirm.
+  await new Promise(resolve => setTimeout(resolve, 500));
 
-    const result = await res.json();
+  // Keep a client-side record so nothing is lost if the visitor doesn't
+  // immediately continue to WhatsApp.
+  saveLocalFallback(formLabel, data);
 
-    if (res.ok && result.success) {
-      // Close quote modal if open
-      const quoteModal = document.getElementById('quoteModal');
-      if (quoteModal) quoteModal.classList.add('hidden');
+  // Close quote modal if open
+  const quoteModal = document.getElementById('quoteModal');
+  if (quoteModal) quoteModal.classList.add('hidden');
 
-      form.reset();
-      showSuccessModal(
-        "Submission Received",
-        result.message || "Thank you. Your requirement has been received. The Tradenza International team will review it and contact you.",
-        waContext
-      );
-    } else {
-      alert(result.message || "Unable to submit requirement. Please check the entered fields.");
-    }
-  } catch (err) {
-    console.warn("Backend API unavailable. Saving to local database fallback.", err);
-    // Offline / Standalone Fallback
-    saveLocalFallback(formLabel, data);
+  form.reset();
+  showSuccessModal(
+    "Requirement Received",
+    `Thank you. Your ${formLabel.toLowerCase()} has been recorded. Tap "Continue on WhatsApp" to send it directly to the Tradenza International trade desk, or we'll reach out to you shortly.`,
+    waContext
+  );
 
-    const quoteModal = document.getElementById('quoteModal');
-    if (quoteModal) quoteModal.classList.add('hidden');
-
-    form.reset();
-    showSuccessModal(
-      "Requirement Received",
-      "Thank you. Your requirement has been received. The Tradenza International team will review it and contact you.",
-      waContext
-    );
-  } finally {
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnHtml;
-    }
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnHtml;
   }
+}
+
+// Compose a readable WhatsApp message including every meaningful field.
+function buildWhatsAppMessage(formLabel, data) {
+  const labels = {
+    name: 'Name',
+    company: 'Company',
+    email: 'Email',
+    phone: 'Phone',
+    country: 'Country',
+    destination_country: 'Destination Country',
+    product: 'Product',
+    products: 'Products',
+    category: 'Category',
+    subject: 'Subject',
+    quantity: 'Quantity',
+    message: 'Message',
+    details: 'Details'
+  };
+
+  const lines = [`Hello Tradenza International, I submitted a ${formLabel}:`];
+  Object.keys(data).forEach(key => {
+    const value = data[key];
+    if (!value) return;
+    const label = labels[key] || key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    lines.push(`- ${label}: ${value}`);
+  });
+
+  return lines.join('\n');
 }
 
 // Client-Side Persistence Fallback
