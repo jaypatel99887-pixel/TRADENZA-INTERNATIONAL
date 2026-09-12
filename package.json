@@ -1,0 +1,13 @@
+{
+  "name": "tradenza-international-static",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tradenza International Private Limited - static marketing site",
+  "scripts": {
+    "dev": "serve . -l 3000 --no-request-logging",
+    "start": "serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
