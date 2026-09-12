@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function attachMapInteractions() {
     const tooltip = document.getElementById('mapTooltip');
     const nodes = mapContainer.querySelectorAll('.market-node');
-    const hubNode = mapContainer.getElementById('indiaHubGroup');
+    const hubNode = mapContainer.querySelector('#indiaHubGroup');
 
     nodes.forEach(node => {
       node.addEventListener('mouseenter', () => {
