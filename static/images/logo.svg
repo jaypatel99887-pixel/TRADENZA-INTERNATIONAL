@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="roseGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3CBD1" />
+      <stop offset="40%" stop-color="#D4949E" />
+      <stop offset="80%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#E8ADB5" />
+    </linearGradient>
+    <filter id="roseGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="#D4949E" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Logo Mark / Emblem (Hexagon with - T - and TRADENZA) -->
+  <g transform="translate(15, 6)">
+    <!-- Rounded Dark Emblem Background -->
+    <rect width="108" height="108" rx="20" fill="#1A1414" stroke="rgba(212, 148, 158, 0.25)" stroke-width="1.2"/>
+
+    <!-- Outer Hexagon -->
+    <!-- Center is (54, 54), radius ~ 46 -->
+    <polygon points="54,12 94,33 94,75 54,96 14,75 14,33" 
+             fill="none" stroke="#D4949E" stroke-width="2" />
+
+    <!-- Inner Hexagon (slightly darker / subtle) -->
+    <polygon points="54,20 86,37 86,71 54,88 22,71 22,37" 
+             fill="none" stroke="#59383C" stroke-width="1.3" />
+
+    <!-- Top Serif 'T' with side dash accents -->
+    <!-- Accent line left -->
+    <line x1="33" y1="41" x2="38" y2="41" stroke="#D4949E" stroke-width="1.8" stroke-linecap="round" />
+    <!-- Accent line right -->
+    <line x1="70" y1="41" x2="75" y2="41" stroke="#D4949E" stroke-width="1.8" stroke-linecap="round" />
+
+    <!-- The Serif 'T' -->
+    <g filter="url(#roseGlow)">
+      <!-- Top horizontal bar of T with serifs -->
+      <polygon points="41,37 67,37 67,41 64,42 62,42 62,56 64,57 65,58 65,60 43,60 43,58 44,57 46,56 46,42 44,42 41,41" fill="#E8ADB5" />
+      <text x="54" y="55" font-family="'Cormorant Garamond', 'Cinzel', 'Playfair Display', serif" font-size="30" font-weight="700" fill="#E8ADB5" text-anchor="middle">T</text>
+    </g>
+
+    <!-- TRADENZA Subtext inside the bottom of the hexagon -->
+    <text x="54" y="74" font-family="'Cormorant Garamond', 'Cinzel', 'Playfair Display', serif" font-size="8.5" font-weight="700" letter-spacing="3.2" fill="#D4949E" text-anchor="middle">
+      TRADENZA
+    </text>
+  </g>
+
+  <!-- Typography Brand Lockup -->
+  <g transform="translate(142, 24)">
+    <!-- Primary Name -->
+    <text x="0" y="40" font-family="'Cormorant Garamond', 'Cinzel', 'Playfair Display', serif" font-size="34" font-weight="700" letter-spacing="5" fill="#FFFFFF">
+      TRADENZA
+    </text>
+    <text x="250" y="40" font-family="'Cormorant Garamond', 'Cinzel', serif" font-size="34" font-weight="700" fill="url(#roseGoldGrad)">
+      .
+    </text>
+
+    <!-- Corporate Suffix -->
+    <text x="2" y="64" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="6.5" fill="#D4949E">
+      INTERNATIONAL
+    </text>
+    <text x="182" y="64" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" letter-spacing="3" fill="#B59FA3">
+      PRIVATE LIMITED
+    </text>
+
+    <!-- Elegant Rose Gold Accent Line -->
+    <line x1="2" y1="74" x2="350" y2="74" stroke="url(#roseGoldGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+
+    <!-- Tagline -->
+    <text x="2" y="88" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" letter-spacing="2.8" fill="#8E787C">
+      GLOBAL IMPORT • EXPORT • SOURCING • INDIA
+    </text>
+  </g>
+</svg>

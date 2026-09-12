@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#1A1414" stroke="rgba(212, 148, 158, 0.4)" stroke-width="1.5"/>
+  <!-- Outer Hexagon -->
+  <polygon points="32,7 55,20 55,44 32,57 9,44 9,20" fill="none" stroke="#D4949E" stroke-width="1.8" />
+  <!-- Inner Hexagon -->
+  <polygon points="32,12 50,22 50,42 32,52 14,42 14,22" fill="none" stroke="#59383C" stroke-width="1" />
+  <!-- Accent dashes -->
+  <line x1="20" y1="24" x2="23" y2="24" stroke="#D4949E" stroke-width="1.2" stroke-linecap="round" />
+  <line x1="41" y1="24" x2="44" y2="24" stroke="#D4949E" stroke-width="1.2" stroke-linecap="round" />
+  <!-- Serif T -->
+  <text x="32" y="34" font-family="'Cormorant Garamond', 'Cinzel', serif" font-size="18" font-weight="700" fill="#E8ADB5" text-anchor="middle">T</text>
+  <!-- TRADENZA -->
+  <text x="32" y="45" font-family="'Cormorant Garamond', 'Cinzel', serif" font-size="5" font-weight="700" letter-spacing="1.5" fill="#D4949E" text-anchor="middle">TRADENZA</text>
+</svg>
