@@ -29,7 +29,7 @@ A luxury, high-performance, responsive corporate website and B2B trade facilitat
 - **Company Name**: Tradenza International Private Limited
 - **Business**: Global Import, Export, Sourcing & Trade Facilitation
 - **Base**: India
-- **Official Email**: `tradenzainternationalprivateli@gmail.com`
+- **Official Email**: `info@tradenza-international.com`
 - **Phone / WhatsApp**: `+91 98251 15213`
 - **Official Logo**: Embedded luxury rose-gold branding (`static/images/tradenza-official-logo.png`)
 - **Compliance Policy**: Zero unsupported claims (no fake certifications, warehouse volume, or fictitious licenses). Sourcing sectors are explicitly presented as sourcing facilitation capabilities.
